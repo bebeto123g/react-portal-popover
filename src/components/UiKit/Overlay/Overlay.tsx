@@ -18,8 +18,6 @@ const Overlay: FC<IOverlayProps> = (props) => {
     const overlayRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
 
-    console.log('Overlay');
-
     if (!isMounted) return null;
 
     return (

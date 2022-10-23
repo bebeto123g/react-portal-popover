@@ -18,16 +18,8 @@ export const useMount = (isOpened: boolean): IUseMountReturn => {
                 setIsMounted(false);
             }, ANIMATION_POPUP_TIME);
         }
-    }, [isOpened]);
 
-    useEffect(() => {
-        if (isMounted && isOpened) {
-            setIsAnimationIn(true);
-        }
-
-        if (isMounted && !isOpened) {
-            setIsAnimationIn(false);
-        }
+        setIsAnimationIn(isMounted && isOpened);
     }, [isOpened, isMounted]);
 
     return { isMounted, isAnimationIn };
