@@ -1,9 +1,14 @@
 import { useState, useEffect } from 'react';
 import { ANIMATION_POPUP_TIME } from './../core/constants';
 
+interface IUseMountReturn {
+    isMounted: boolean;
+    isAnimationIn: boolean;
+}
 
-export const useMount = (isOpened: boolean): boolean => {
+export const useMount = (isOpened: boolean): IUseMountReturn => {
     const [isMounted, setIsMounted] = useState(false);
+    const [isAnimationIn, setIsAnimationIn] = useState(false);
 
     useEffect(() => {
         if (isOpened && !isMounted) {
@@ -15,5 +20,15 @@ export const useMount = (isOpened: boolean): boolean => {
         }
     }, [isOpened]);
 
-    return isMounted;
+    useEffect(() => {
+        if (isMounted && isOpened) {
+            setIsAnimationIn(true);
+        }
+
+        if (isMounted && !isOpened) {
+            setIsAnimationIn(false);
+        }
+    }, [isOpened, isMounted]);
+
+    return { isMounted, isAnimationIn };
 };

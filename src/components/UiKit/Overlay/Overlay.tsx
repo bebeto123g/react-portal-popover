@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { FC, ReactNode, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import styles from './Overlay.module.scss';
 import Portal from '../Portal/Portal';
@@ -13,21 +13,12 @@ interface IOverlayProps {
 
 const Overlay: FC<IOverlayProps> = (props) => {
     const { children, isOpened, onClose } = props;
-    const isMounted = useMount(isOpened);
-    const [animationIn, setAnimationIn] = useState(false);
+    const { isMounted, isAnimationIn } = useMount(isOpened);
 
     const overlayRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        if (isMounted && isOpened) {
-            setAnimationIn(true);
-        }
-
-        if (isMounted && !isOpened) {
-            setAnimationIn(false);
-        }
-    }, [isMounted, isOpened]);
+    console.log('Overlay');
 
     if (!isMounted) return null;
 
@@ -45,7 +36,7 @@ const Overlay: FC<IOverlayProps> = (props) => {
                         exit: styles.overlayExit,
                         exitActive: styles.overlayExitActive,
                     }}
-                    in={animationIn}
+                    in={isAnimationIn}
                 >
                     <div
                         ref={overlayRef}
@@ -65,7 +56,7 @@ const Overlay: FC<IOverlayProps> = (props) => {
                         exit: styles.contentExit,
                         exitActive: styles.contentExitActive,
                     }}
-                    in={animationIn}
+                    in={isAnimationIn}
                 >
                     <div className={styles.content} ref={contentRef}>
                         {children}
