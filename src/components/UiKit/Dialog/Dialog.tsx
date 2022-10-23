@@ -2,28 +2,22 @@ import React, { FC } from 'react';
 import Overlay from '../Overlay/Overlay';
 import styles from './Dialog.module.scss';
 
+interface IDialogButton {
+    text: string;
+    onClick: () => void;
+}
+
 interface IDialogProps {
     onClose: () => void;
     isOpened: boolean;
     title?: string;
     text: string;
-    successButtonText?: string;
-    successButtonClick?: () => void;
-    cancelButtonText?: string;
-    cancelButtonClick?: () => void;
+    action?: IDialogButton;
+    cancel?: IDialogButton;
 }
 
 const Dialog: FC<IDialogProps> = (props) => {
-    const {
-        isOpened,
-        onClose,
-        title,
-        text,
-        successButtonText,
-        successButtonClick,
-        cancelButtonText,
-        cancelButtonClick,
-    } = props;
+    const { isOpened, onClose, title, text, action, cancel } = props;
 
     return (
         <Overlay isOpened={isOpened} onClose={onClose}>
@@ -31,12 +25,8 @@ const Dialog: FC<IDialogProps> = (props) => {
                 {title && <div className={styles.title}>{title}</div>}
                 <div className={styles.text}>{text}</div>
                 <div className={styles.footer}>
-                    {cancelButtonText && cancelButtonClick && (
-                        <button onClick={cancelButtonClick}>{cancelButtonText}</button>
-                    )}
-                    {successButtonText && successButtonClick && (
-                        <button onClick={successButtonClick}>{successButtonText}</button>
-                    )}
+                    {cancel && <button onClick={cancel.onClick}>{cancel.text}</button>}
+                    {action && <button onClick={action.onClick}>{action.text}</button>}
                 </div>
             </div>
         </Overlay>

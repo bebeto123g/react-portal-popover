@@ -66,10 +66,14 @@ const App = () => {
                 text='Текст Dialog'
                 onClose={handleCloseDialog}
                 isOpened={isOpenedDialog}
-                cancelButtonClick={handleCloseDialog}
-                cancelButtonText='Закрыть'
-                successButtonClick={handleSuccesDialog}
-                successButtonText='Применить'
+                action={{
+                    onClick: handleSuccesDialog,
+                    text: 'Применить',
+                }}
+                cancel={{
+                    onClick: handleCloseDialog,
+                    text: 'Закрыть',
+                }}
             />
         </>
     );
