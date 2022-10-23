@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import OverlayingPopup from '../OverlayingPopup/OverlayingPopup';
+import Overlay from '../Overlay/Overlay';
 import styles from './Dialog.module.scss';
 
 interface IDialogProps {
@@ -26,7 +26,7 @@ const Dialog: FC<IDialogProps> = (props) => {
     } = props;
 
     return (
-        <OverlayingPopup isOpened={isOpened} onClose={onClose}>
+        <Overlay isOpened={isOpened} onClose={onClose}>
             <div className={styles.container}>
                 {title && <div className={styles.title}>{title}</div>}
                 <div className={styles.text}>{text}</div>
@@ -39,7 +39,7 @@ const Dialog: FC<IDialogProps> = (props) => {
                     )}
                 </div>
             </div>
-        </OverlayingPopup>
+        </Overlay>
     );
 };
 

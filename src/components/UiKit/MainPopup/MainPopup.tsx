@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import HeaderPopup from '../HeaderPopup/HeaderPopup';
-import OverlayingPopup from '../OverlayingPopup/OverlayingPopup';
-import styles from './Popup.module.scss';
+import Overlay from '../Overlay/Overlay';
+import styles from './MainPopup.module.scss';
 
 interface IMainPopupProps {
     title: ReactNode;
@@ -16,14 +16,14 @@ const MainPopup: FC<IMainPopupProps> = (props) => {
     const { title, isOpened, onClose, onPrevArrow, className = '', children } = props;
 
     return (
-        <OverlayingPopup isOpened={isOpened} onClose={onClose}>
+        <Overlay isOpened={isOpened} onClose={onClose}>
             <div className={`${styles.container} ${className}`}>
                 <HeaderPopup onPrevArrow={onPrevArrow} onClose={onClose}>
                     {title}
                 </HeaderPopup>
                 {children}
             </div>
-        </OverlayingPopup>
+        </Overlay>
     );
 };
 
