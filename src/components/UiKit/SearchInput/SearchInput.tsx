@@ -1,13 +1,19 @@
-import React, { ChangeEventHandler, FC, KeyboardEventHandler, useRef, useState } from 'react';
+import React, {
+    ChangeEventHandler,
+    FC,
+    InputHTMLAttributes,
+    KeyboardEventHandler,
+    useState,
+} from 'react';
 
-interface ISearchInputProps {
+interface ISearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
     onSearch: (value: string) => void;
     label?: string;
-    name: string;
+    id: string;
 }
 
 const SearchInput: FC<ISearchInputProps> = (props) => {
-    const { onSearch, label, name } = props;
+    const { onSearch, label, id, ...otherProps } = props;
 
     const [searchValue, setSearchValue] = useState('');
 
@@ -30,18 +36,18 @@ const SearchInput: FC<ISearchInputProps> = (props) => {
         <div className='mb-3 d-flex align-items-end gap-3'>
             <div className='flex-grow-1'>
                 {label && (
-                    <label htmlFor={name} className='form-label'>
+                    <label htmlFor={id} className='form-label'>
                         {label}
                     </label>
                 )}
                 <input
-                    id={name}
+                    id={id}
                     className='form-control'
                     type='search'
                     value={searchValue}
-                    placeholder='Search list item'
                     onKeyDown={onPressEnter}
                     onChange={handleChange}
+                    {...otherProps}
                 />
             </div>
             <button className='btn btn-primary' onClick={handleSearch}>

@@ -30,13 +30,18 @@ const List: FC<IListProps> = (props) => {
         );
 
         setCurrentList(nerCurrentList);
-    }, []);
+    }, [list]);
 
     if (!list) return null;
 
     return (
         <>
-            <SearchInput onSearch={onSearch} name='search-list' label='Search list' />
+            <SearchInput
+                onSearch={onSearch}
+                id='search-list'
+                label='Search list'
+                placeholder='Search list'
+            />
             {currentList?.length ? (
                 <ul className='list-group'>
                     {currentList.map((item) => (
