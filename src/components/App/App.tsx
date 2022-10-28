@@ -1,7 +1,9 @@
 import React, { useCallback, useState } from 'react';
-import Dialog from './components/UiKit/Dialog/Dialog';
-import MainPopup from './components/UiKit/MainPopup/MainPopup';
-import styles from './styles/App.module.scss';
+import Dialog from '../UiKit/Dialog/Dialog';
+import MainPopup from '../UiKit/MainPopup/MainPopup';
+import styles from './App.module.scss';
+import List from '../List/List';
+import { listData } from '../../resourse/list';
 
 const App = () => {
     const [isOpenedPopup, setIsOpenedPopup] = useState(false);
@@ -37,7 +39,7 @@ const App = () => {
     return (
         <div className={styles.app}>
             <div className='container pt-4'>
-                <div className='row'>
+                <div className='row mb-4'>
                     <div className='col'>
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque iste saepe
                         odit at vel cum reprehenderit fugiat tempora possimus aliquam, nostrum
@@ -52,7 +54,7 @@ const App = () => {
                         quo atque similique?
                     </div>
                 </div>
-                <div className='row mt-3'>
+                <div className='row mb-4'>
                     <div className='col-2'>
                         <button onClick={handleOpenPopup} className='btn btn-info'>
                             Open MainPopup
@@ -60,6 +62,11 @@ const App = () => {
                         <button onClick={handleOpenDialog} className='btn btn-warning mt-2'>
                             Open Dialog
                         </button>
+                    </div>
+                </div>
+                <div className='row mb-4'>
+                    <div className='col'>
+                        <List list={listData} />
                     </div>
                 </div>
             </div>
