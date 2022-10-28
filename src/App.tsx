@@ -27,31 +27,41 @@ const App = () => {
         setIsOpenedDialog(false);
     }, []);
 
-    const handleSuccesDialog = useCallback(() => {
-        console.log('click handleSuccesDialog');
+    const handleSuccessDialog = useCallback(() => {
+        console.log('click handleSuccessDialog');
         setTimeout(() => {
             setIsOpenedDialog(false);
         }, 1000);
     }, []);
 
     return (
-        <>
-            <div className={styles.app}>
-                <div className=''>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque iste saepe odit
-                    at vel cum reprehenderit fugiat tempora possimus aliquam, nostrum libero nulla
-                    sint consequuntur? Deserunt quibusdam, omnis corporis quia, iure veniam dolorum
-                    ipsam tempore libero optio eius nam, laboriosam temporibus maxime consequuntur
-                    culpa. Quam deserunt, numquam amet laudantium, nam assumenda natus quo eligendi
-                    corrupti nihil ex ratione aut quia ipsum reprehenderit! Veritatis ullam libero
-                    vero accusantium fugiat explicabo amet delectus doloremque hic numquam quas
-                    sapiente tenetur eveniet assumenda corporis voluptatem nobis ratione
-                    exercitationem quia optio, eaque soluta nam! Excepturi quae numquam blanditiis
-                    velit pariatur esse repellat quo atque similique?
+        <div className={styles.app}>
+            <div className='container pt-4'>
+                <div className='row'>
+                    <div className='col'>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque iste saepe
+                        odit at vel cum reprehenderit fugiat tempora possimus aliquam, nostrum
+                        libero nulla sint consequuntur? Deserunt quibusdam, omnis corporis quia,
+                        iure veniam dolorum ipsam tempore libero optio eius nam, laboriosam
+                        temporibus maxime consequuntur culpa. Quam deserunt, numquam amet
+                        laudantium, nam assumenda natus quo eligendi corrupti nihil ex ratione aut
+                        quia ipsum reprehenderit! Veritatis ullam libero vero accusantium fugiat
+                        explicabo amet delectus doloremque hic numquam quas sapiente tenetur eveniet
+                        assumenda corporis voluptatem nobis ratione exercitationem quia optio, eaque
+                        soluta nam! Excepturi quae numquam blanditiis velit pariatur esse repellat
+                        quo atque similique?
+                    </div>
                 </div>
-                <br />
-                <button onClick={handleOpenPopup}>Open MainPopup</button>
-                <button onClick={handleOpenDialog}>Open Dialog</button>
+                <div className='row mt-3'>
+                    <div className='col-2'>
+                        <button onClick={handleOpenPopup} className='btn btn-info'>
+                            Open MainPopup
+                        </button>
+                        <button onClick={handleOpenDialog} className='btn btn-warning mt-2'>
+                            Open Dialog
+                        </button>
+                    </div>
+                </div>
             </div>
             <MainPopup
                 title='Заголовок для MainPopup'
@@ -67,7 +77,7 @@ const App = () => {
                 onClose={handleCloseDialog}
                 isOpened={isOpenedDialog}
                 action={{
-                    onClick: handleSuccesDialog,
+                    onClick: handleSuccessDialog,
                     text: 'Применить',
                 }}
                 cancel={{
@@ -75,7 +85,7 @@ const App = () => {
                     text: 'Закрыть',
                 }}
             />
-        </>
+        </div>
     );
 };
 

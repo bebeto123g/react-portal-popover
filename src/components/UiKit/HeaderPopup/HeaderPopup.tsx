@@ -1,19 +1,18 @@
 import React, { FC, ReactNode } from 'react';
-import styles from './HeaderPopup.module.scss';
 
 export interface IHeaderPopupProps {
     onClose: () => void;
-    onPrevArrow: () => void;
+    onPrevArrow?: () => void;
     children: ReactNode;
 }
 
 const HeaderPopup: FC<IHeaderPopupProps> = (props) => {
     const { onClose, onPrevArrow, children } = props;
     return (
-        <div className={styles.header}>
-            <button onClick={onPrevArrow}>НАЗАД</button>
-            {children}
-            <button onClick={onClose}>ЗАКРЫТЬ</button>
+        <div className='modal-header'>
+            {onPrevArrow && <button onClick={onPrevArrow}>НАЗАД</button>}
+            <h5 className='modal-title'>{children}</h5>
+            <button onClick={onClose} className='btn-close'></button>
         </div>
     );
 };

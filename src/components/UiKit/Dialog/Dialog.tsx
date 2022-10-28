@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import Overlay from '../Overlay/Overlay';
 import styles from './Dialog.module.scss';
+import HeaderPopup from '../HeaderPopup/HeaderPopup';
 
 interface IDialogButton {
     text: string;
@@ -22,11 +23,19 @@ const Dialog: FC<IDialogProps> = (props) => {
     return (
         <Overlay isOpened={isOpened} onClose={onClose}>
             <div className={styles.container}>
-                {title && <div className={styles.title}>{title}</div>}
-                <div className={styles.text}>{text}</div>
-                <div className={styles.footer}>
-                    {cancel && <button onClick={cancel.onClick}>{cancel.text}</button>}
-                    {action && <button onClick={action.onClick}>{action.text}</button>}
+                {title && <HeaderPopup onClose={onClose}>{title}</HeaderPopup>}
+                <div className='modal-body'>{text}</div>
+                <div className='modal-footer'>
+                    {cancel && (
+                        <button className='btn btn-outline-secondary' onClick={cancel.onClick}>
+                            {cancel.text}
+                        </button>
+                    )}
+                    {action && (
+                        <button className='btn btn-primary' onClick={action.onClick}>
+                            {action.text}
+                        </button>
+                    )}
                 </div>
             </div>
         </Overlay>

@@ -18,10 +18,12 @@ const MainPopup: FC<IMainPopupProps> = (props) => {
     return (
         <Overlay isOpened={isOpened} onClose={onClose}>
             <div className={`${styles.container} ${className}`}>
-                <HeaderPopup onPrevArrow={onPrevArrow} onClose={onClose}>
+                <HeaderPopup onClose={onClose}>
                     {title}
                 </HeaderPopup>
-                {children}
+                <div className='modal-body'>
+                    {children}
+                </div>
             </div>
         </Overlay>
     );
