@@ -10,10 +10,11 @@ interface ISearchInputProps extends InputHTMLAttributes<HTMLInputElement> {
     onSearch: (value: string) => void;
     label?: string;
     id: string;
+    buttonText: string;
 }
 
 const SearchInput: FC<ISearchInputProps> = (props) => {
-    const { onSearch, label, id, ...otherProps } = props;
+    const { onSearch, label, id, buttonText, ...otherProps } = props;
 
     const [searchValue, setSearchValue] = useState('');
 
@@ -51,7 +52,7 @@ const SearchInput: FC<ISearchInputProps> = (props) => {
                 />
             </div>
             <button className='btn btn-primary' onClick={handleSearch}>
-                Search
+                {buttonText}
             </button>
         </div>
     );

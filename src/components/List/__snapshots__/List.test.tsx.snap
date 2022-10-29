@@ -5,6 +5,32 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
+      <div
+        class="mb-3 d-flex align-items-end gap-3"
+      >
+        <div
+          class="flex-grow-1"
+        >
+          <label
+            class="form-label"
+            for="search-list"
+          >
+            Search list
+          </label>
+          <input
+            class="form-control"
+            id="search-list"
+            placeholder="Search list"
+            type="search"
+            value=""
+          />
+        </div>
+        <button
+          class="btn btn-primary"
+        >
+          Find
+        </button>
+      </div>
       <ul
         class="list-group"
       >
@@ -34,6 +60,32 @@ Object {
     </div>
   </body>,
   "container": <div>
+    <div
+      class="mb-3 d-flex align-items-end gap-3"
+    >
+      <div
+        class="flex-grow-1"
+      >
+        <label
+          class="form-label"
+          for="search-list"
+        >
+          Search list
+        </label>
+        <input
+          class="form-control"
+          id="search-list"
+          placeholder="Search list"
+          type="search"
+          value=""
+        />
+      </div>
+      <button
+        class="btn btn-primary"
+      >
+        Find
+      </button>
+    </div>
     <ul
       class="list-group"
     >
@@ -120,15 +172,71 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <ul
-        class="list-group"
-      />
+      <div
+        class="mb-3 d-flex align-items-end gap-3"
+      >
+        <div
+          class="flex-grow-1"
+        >
+          <label
+            class="form-label"
+            for="search-list"
+          >
+            Search list
+          </label>
+          <input
+            class="form-control"
+            id="search-list"
+            placeholder="Search list"
+            type="search"
+            value=""
+          />
+        </div>
+        <button
+          class="btn btn-primary"
+        >
+          Find
+        </button>
+      </div>
+      <h5
+        class="text-center mt-5"
+      >
+        Ничего не найдено
+      </h5>
     </div>
   </body>,
   "container": <div>
-    <ul
-      class="list-group"
-    />
+    <div
+      class="mb-3 d-flex align-items-end gap-3"
+    >
+      <div
+        class="flex-grow-1"
+      >
+        <label
+          class="form-label"
+          for="search-list"
+        >
+          Search list
+        </label>
+        <input
+          class="form-control"
+          id="search-list"
+          placeholder="Search list"
+          type="search"
+          value=""
+        />
+      </div>
+      <button
+        class="btn btn-primary"
+      >
+        Find
+      </button>
+    </div>
+    <h5
+      class="text-center mt-5"
+    >
+      Ничего не найдено
+    </h5>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

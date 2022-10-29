@@ -40,6 +40,7 @@ const List: FC<IListProps> = (props) => {
                 onSearch={onSearch}
                 id='search-list'
                 label='Search list'
+                buttonText='Find'
                 placeholder='Search list'
             />
             {currentList?.length ? (

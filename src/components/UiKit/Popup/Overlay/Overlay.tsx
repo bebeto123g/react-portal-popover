@@ -1,9 +1,9 @@
-import React, { FC, ReactNode, useRef } from 'react';
+import React, { FC, ReactNode, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import styles from './Overlay.module.scss';
-import Portal from '../Portal/Portal';
-import { useMount } from '../../../hooks/useMount';
-import { ANIMATION_POPUP_TIME } from '../../../core/constants';
+import Portal from '../../Portal/Portal';
+import { useMount } from '../../../../hooks/useMount';
+import { ANIMATION_POPUP_TIME } from '../../../../core/constants';
 
 interface IOverlayProps {
     children: ReactNode;
@@ -17,6 +17,15 @@ const Overlay: FC<IOverlayProps> = (props) => {
 
     const overlayRef = useRef<HTMLDivElement>(null);
     const contentRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (isOpened) {
+            document.body.classList.add('overflow-body');
+        }
+        return () => {
+            document.body.classList.remove('overflow-body');
+        };
+    }, [isOpened]);
 
     if (!isMounted) return null;
 

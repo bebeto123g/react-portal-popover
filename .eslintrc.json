@@ -27,7 +27,14 @@
         "max-len": ["warn", { "code": 100 }],
         "comma-dangle": ["warn", "always-multiline"],
         "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": "warn",
+        "@typescript-eslint/no-unused-vars": [
+            "warn", // or "error"
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_",
+                "caughtErrorsIgnorePattern": "^_"
+            }
+        ],
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/no-inferrable-types": "warn",
         "semi": ["warn", "always"],

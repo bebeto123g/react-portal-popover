@@ -1,9 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import Dialog from '../UiKit/Dialog/Dialog';
-import MainPopup from '../UiKit/MainPopup/MainPopup';
+import Dialog from '../UiKit/Popup/Dialog/Dialog';
+import MainPopup from '../UiKit/Popup/MainPopup/MainPopup';
 import styles from './App.module.scss';
 import List from '../List/List';
 import { listData } from '../../resourse/list';
+import { loremText } from '../../resourse/lorem';
 
 const App = () => {
     const [isOpenedPopup, setIsOpenedPopup] = useState(false);
@@ -40,19 +41,7 @@ const App = () => {
         <div className={styles.app}>
             <div className='container pt-4'>
                 <div className='row mb-4'>
-                    <div className='col'>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque iste saepe
-                        odit at vel cum reprehenderit fugiat tempora possimus aliquam, nostrum
-                        libero nulla sint consequuntur? Deserunt quibusdam, omnis corporis quia,
-                        iure veniam dolorum ipsam tempore libero optio eius nam, laboriosam
-                        temporibus maxime consequuntur culpa. Quam deserunt, numquam amet
-                        laudantium, nam assumenda natus quo eligendi corrupti nihil ex ratione aut
-                        quia ipsum reprehenderit! Veritatis ullam libero vero accusantium fugiat
-                        explicabo amet delectus doloremque hic numquam quas sapiente tenetur eveniet
-                        assumenda corporis voluptatem nobis ratione exercitationem quia optio, eaque
-                        soluta nam! Excepturi quae numquam blanditiis velit pariatur esse repellat
-                        quo atque similique?
-                    </div>
+                    <div className='col'>{loremText}</div>
                 </div>
                 <div className='row mb-4'>
                     <div className='col-2'>
@@ -76,21 +65,17 @@ const App = () => {
                 onClose={handleClosePopup}
                 isOpened={isOpenedPopup}
             >
-                <div className=''>Контент для MainPopup</div>
+                <div className=''>{loremText}</div>
             </MainPopup>
             <Dialog
                 title='Заголовок Dialog'
-                text='Текст Dialog'
+                text={loremText}
                 onClose={handleCloseDialog}
                 isOpened={isOpenedDialog}
-                action={{
-                    onClick: handleSuccessDialog,
-                    text: 'Применить',
-                }}
-                cancel={{
-                    onClick: handleCloseDialog,
-                    text: 'Закрыть',
-                }}
+                actions={[
+                    { text: 'Закрыть', onClick: handleCloseDialog },
+                    { text: 'Применить', onClick: handleSuccessDialog, className: 'btn-primary' },
+                ]}
             />
         </div>
     );
