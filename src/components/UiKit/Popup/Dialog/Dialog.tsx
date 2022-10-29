@@ -3,6 +3,13 @@ import Overlay from '../Overlay/Overlay';
 import HeaderPopup from '../HeaderPopup/HeaderPopup';
 import FooterPopup, { IDialogFooterActionButton } from '../FooterPopup/FooterPopup';
 
+/**
+ * @property onClose - функция закрытия диалога
+ * @property isOpened - состояие откыт\закрыт диалог
+ * @property title - заголовок, без заголовка header рендериться не будет
+ * @property text - текст контента диалога
+ * @property actions - массив кнопок действий в footer диалога
+ * */
 interface IDialogProps {
     onClose: () => void;
     isOpened: boolean;
@@ -11,6 +18,7 @@ interface IDialogProps {
     actions: Array<IDialogFooterActionButton>;
 }
 
+/** @desc Компонент Dialog должен иметь actions для FooterPopup. Может рендериться без заголовка. */
 const Dialog: FC<IDialogProps> = (props) => {
     const { isOpened, onClose, title, text, actions } = props;
 
