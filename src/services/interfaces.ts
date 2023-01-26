@@ -1,3 +1,3 @@
 export interface IClassNamesProps {
-    [key: string]: boolean;
+    [key: string]: string | boolean;
 }
