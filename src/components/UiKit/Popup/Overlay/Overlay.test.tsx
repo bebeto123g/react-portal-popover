@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Overlay from './Overlay';
+import userEvent from '@testing-library/user-event';
 
 const onClose = jest.fn();
 
@@ -16,6 +17,9 @@ describe('Overlay component', () => {
     test('open Overlay component', () => {
         render(<OverlayTest isOpened={true} />);
         expect(screen.getByText(/Overlay test/i)).toBeInTheDocument();
+        userEvent.click(screen.getByText(/Overlay test/i), {
+            ctrlKey: true,
+        });
     });
 
     test('close Overlay component', () => {
@@ -23,3 +27,4 @@ describe('Overlay component', () => {
         expect(screen.queryByText(/Overlay test/i)).toBeNull();
     });
 });
+
