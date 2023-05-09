@@ -20,11 +20,14 @@ describe('Overlay component', () => {
         userEvent.click(screen.getByText(/Overlay test/i), {
             ctrlKey: true,
         });
+        expect(onClose).toBeCalledTimes(0);
+        userEvent.click(screen.getByRole('overlay'));
+        expect(onClose).toBeCalledTimes(1);
+        expect(screen.queryByText(/Overlay test/i)).toBeNull();
     });
 
     test('close Overlay component', () => {
         render(<OverlayTest isOpened={false} />);
-        expect(screen.queryByText(/Overlay test/i)).toBeNull();
+
     });
 });
-

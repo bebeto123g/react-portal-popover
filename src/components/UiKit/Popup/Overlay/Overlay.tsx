@@ -50,6 +50,7 @@ const Overlay: FC<IOverlayProps> = (props) => {
                         className={styles.overlay}
                         onClick={onClose}
                         tabIndex={0}
+                        role='overlay'
                     />
                 </CSSTransition>
                 <CSSTransition
